@@ -1,32 +1,32 @@
 import random
 
-def encounter_function():
-    encounter_value = random.randint(1,100)
-    shiny_value = random.randint(1,8192)
-    global pokemon
+def encounterFunction():
+    encounterValue = random.randint(1,100)
+    shinyValue = random.randint(1,8192)
+    global wildPokemon
 
-    if encounter_value in range (1,30):
-        pokemon = "snubull"
-    elif encounter_value in range  (30,60):
-        pokemon = "rattata"
-    elif encounter_value in range  (60,80):
-        pokemon = "pidgey"
-    elif encounter_value in range  (80,90):
-        pokemon = "abra"
-    elif encounter_value in range  (90,95):
-        pokemon = "jigglupyff"
-    elif encounter_value in range  (95,100):
-        pokemon = "ditto"
+    if encounterValue in range (1,30):
+        wildPokemon = "snubull"
+    elif encounterValue in range  (30,60):
+        wildPokemon = "rattata"
+    elif encounterValue in range  (60,80):
+        wildPokemon = "pidgey"
+    elif encounterValue in range  (80,90):
+        wildPokemon = "abra"
+    elif encounterValue in range  (90,95):
+        wildPokemon = "jigglupyff"
+    elif encounterValue in range  (95,100):
+        wildPokemon = "ditto"
 
-    if shiny_value == (450):
-        print("shiny " + pokemon)
+    if shinyValue == (450):
+        print("shiny " + wildPokemon)
     else:
-        print(pokemon)
+        print(wildPokemon)
     
     return
 
 
 steps = 0
 while (steps <= 5678):
-    encounter_function()
+    encounterFunction()
     steps += 1
