@@ -16,7 +16,7 @@ def encounter_function():
     elif encounter_value in range  (90,95):
         pokemon = "jigglupyff"
     elif encounter_value in range  (95,100):
-        pokemon = "jigglypuff"
+        pokemon = "ditto"
 
     if shiny_value == (450):
         print("shiny " + pokemon)
