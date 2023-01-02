@@ -1,4 +1,5 @@
 import random
+from operator import itemgetter
 
 # wild encounter function
 def encounterFunction():
@@ -29,8 +30,61 @@ def encounterFunction():
     
     return
 
-# Simulate taking 5,678 steps in tall grass.
+# instantiate pokemon stats function
+def instantiatePokemon():
+    # create lists for the base stats, iv & ev values
+    global level
+    global baseHp
+    global hp
+
+    statList = random.sample(range(0, 7), 6)
+    baseHp, baseAttack, baseDefense, baseSpAttack, baseSpDefense, baseSpeed = itemgetter(0, 1, 2, 3, 4, 5)(statList)
+
+    individualValues = random.sample(range(0, 7), 6)
+    hpIV, attackIV, defenseIV, spAttackIV, spDefenseIV, speedIV = itemgetter(0, 1, 2, 3, 4, 5)(individualValues)
+
+    effortValues = random.sample(range(0, 7), 6)
+    hpEV, attackEV, defenseEV, spAttackEV, spDefenseEV, speedEV = itemgetter(0, 1, 2, 3, 4, 5)(effortValues)
+
+    # instantiate the nauture, level and floor variables
+    nature = random.randint(0,24)
+    level = 100
+    floor = 1
+
+    # calculate the stats
+    hp = round(floor * 0.01 * (2 * baseHp + hpIV + floor * (0.25 * hpEV)) * level + level + 10)
+    attack = round(floor * 0.01 * (2 * baseAttack + attackIV + floor) * (0.25 * attackEV) * level + 5 * nature)
+    defense = round(floor * 0.01 * (2 * baseDefense + defenseIV + floor) * (0.25 * defenseEV) * level + 5 * nature)
+    spAttack = round(floor * 0.01 * (2 * baseSpAttack + spAttackIV + floor) * (0.25 * spAttackEV) * level + 5 * nature)
+    spDefense = round(floor * 0.01 * (2 * baseSpDefense + spDefenseIV + floor) * (0.25 * spDefenseEV) * level + 5 * nature)
+    speed = round(floor * 0.01 * (2 * baseSpeed + speedIV + floor) * (0.25 * speedEV) * level + 5 * nature)
+
+    print("HP: " + str(hp))
+    print("Attack: " + str(attack))
+    print("Defense: " + str(defense))
+    print("Special Attack: " + str(spAttack))
+    print("Special Defense: " + str(spDefense))
+    print("Speed: " + str(speed))
+    print("Nature: " + str(nature))
+    #print("\n")
+
+def catchAttempt():
+    status = 1
+    pokeBall = 1
+
+    catchRate = 253 #3 * baseHp - (2 * hp) * pokeBall //  (3 * baseHp) * status
+
+    if catchRate <= 255:
+        print(wildPokemon.title() + " was caught!")
+        print("\n")
+    else:
+        print("Ah! that was close!")
+        print("\n")
+
+# simulate taking 5,678 steps in tall grass.
 steps = 0
-while (steps <= 5678):
+while (steps <= 8096):
     encounterFunction()
+    instantiatePokemon()
+    catchAttempt()
     steps += 1
