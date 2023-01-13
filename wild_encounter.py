@@ -68,13 +68,14 @@ def instantiatePokemon():
     print("Nature: " + str(nature))
     #print("\n")
 
-def catchAttempt():
-    status = 1
-    pokeBall = 1
+def catchAttempt(hp):
+    status = random.randint(0,24)
+    pokeBall = random.randint(0,32)
+    baseHp = 50
 
-    catchRate = 253 #3 * baseHp - (2 * hp) * pokeBall //  (3 * baseHp) * status
+    catchRate = 3 * baseHp - (2 * hp) * pokeBall //  (3 * baseHp) * status
 
-    if catchRate <= 255:
+    if catchRate >= 1:
         print(wildPokemon.title() + " was caught!")
         print("\n")
     else:
@@ -86,5 +87,5 @@ steps = 0
 while (steps <= 8096):
     encounterFunction()
     instantiatePokemon()
-    catchAttempt()
+    catchAttempt(hp)
     steps += 1
